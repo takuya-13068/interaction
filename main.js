@@ -1,3 +1,8 @@
+var sound;
+function preload(){
+    music1 = loadSound('assets/sound/sample1.mp3');
+}
+
 function setup(){
 	createCanvas(windowWidth, windowHeight);
 	frameRate(50);
@@ -10,14 +15,13 @@ function setup(){
 
     const width = windowWidth;
     const height = windowHeight;
-
 }
 
 function mousePressed(){
     var n = 1;
     //circle1();
     //splashBrush();
-
+    music1.play();
 }
 
 function mouseDragged(){
