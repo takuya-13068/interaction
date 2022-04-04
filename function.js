@@ -1,3 +1,8 @@
+function defBack(num){
+    if(num % 2 == 0)background(255);
+    else background(155,155,0);
+}
+
 function mouseCircle(){
     for (var y = 0; y <= windowHeight; y += 20) {
         for (var x = 0; x <= windowWidth; x += 20) {
@@ -99,5 +104,27 @@ function chaseFace(){
 }
 
 function changeColor(){
-    fill(ramdom(255),ramdom(255),ramdom(255),ramdom(255));
+    fill(random(255),random(255),random(255),random(255));
+}
+
+
+function makeshape(x,y,width,height){
+    var num = random(100);
+    noStroke();
+    fill(255);
+    rect(x,y,width,height);
+    randomColor(changeFlg);
+    if(num < 30) ellipse(x+width/2,y+height/2,width,height);
+    else rect(x,y,width,height)
+}
+
+function randomBack(){
+    background(floor(random(256)),floor(random(256)),floor(random(256)));
+}
+
+function randomColor(flg){
+    if(flg){ 
+        color = [floor(random(256)),floor(random(256)),floor(random(256))];
+        changeFlg=false;}
+    fill(color[0],color[1],color[2]);
 }
