@@ -1,7 +1,3 @@
-var sound;
-function preload(){
-    music1 = loadSound('assets/sound/sample1.mp3');
-}
 
 function setup(){
 	createCanvas(windowWidth, windowHeight);
@@ -15,13 +11,16 @@ function setup(){
 
     const width = windowWidth;
     const height = windowHeight;
+
+    backcolor = 0;
 }
 
 function mousePressed(){
     var n = 1;
     //circle1();
     //splashBrush();
-    music1.play();
+    click.play();
+    backcolor++;
 }
 
 function mouseDragged(){
@@ -29,7 +28,7 @@ function mouseDragged(){
 }
 
 function draw(){
-    background(255);
+    defBack(backcolor);
     rot();
     //rot2();
     Lissajous();
