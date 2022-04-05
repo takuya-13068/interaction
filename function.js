@@ -128,3 +128,37 @@ function randomColor(flg){
         changeFlg=false;}
     fill(color[0],color[1],color[2]);
 }
+
+function moveCircle(basex,basey){
+    for(var p=0; p<100; p++){
+        theta = p/100*2*PI;
+            /*size = sqrt(x**2 + y**2);
+            corx= x / size;
+            cory= y / size;
+            console.log(cos(corx),sin(cory));*/
+        r = sin(frameCount/20)*100;
+        fill(color[0],color[1],color[2]);
+        ellipse(basex + r*cos(theta), basey + r*sin(theta),4,4);
+    }
+    fill(0);
+    textSize(29);
+    text('want you change color??', 50, 50);
+}
+
+function spreadCircle(){
+    //start
+    if(onemoveFlg){
+        loc=[mouseX,mouseY,frameCount];
+        onemoveFlg=false;
+    }
+    for(var p=0; p<100; p++){
+        theta = p/100*2*PI;
+        r = (frameCount-loc[2])*40;
+        fill(color[0],color[1],color[2]);
+        ellipse(loc[0] + r*cos(theta), loc[1] + r*sin(theta),4,4);
+    }
+    //end
+    if(frameCount-loc[2] >= 60){
+        spreadFlg=false;
+    }
+}
