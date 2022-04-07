@@ -129,7 +129,7 @@ function randomColor(flg){
     fill(color[0],color[1],color[2]);
 }
 
-function moveCircle(basex,basey){
+function moveCircle(basex,basey){//点状の円が収縮する
     for(var p=0; p<100; p++){
         theta = p/100*2*PI;
             /*size = sqrt(x**2 + y**2);
@@ -145,7 +145,7 @@ function moveCircle(basex,basey){
     text('want you change color??', 50, 50);
 }
 
-function spreadCircle(){
+function spreadCircle(){//飛び散る波形
     //start
     if(onemoveFlg){
         loc=[mouseX,mouseY,frameCount];
@@ -161,4 +161,66 @@ function spreadCircle(){
     if(frameCount-loc[2] >= 60){
         spreadFlg=false;
     }
+}
+
+function designSquare(x,y,r){
+
+}
+
+function scaleSquare(x,y,r,flg){//(x,y,辺の長さ, 0;縮小, 1:拡大)
+    if(r>60 || r<0){
+        if(flg==0)r=0;
+        else r=60;
+        flg = (flg+1)%2;
+    } else if(flg==1){
+        x-=0.5;
+        y-=0.5;
+        r+=1;
+    } else if(flg==0){
+        x+=0.5;
+        y+=0.5;
+        r-=1;
+    } 
+    return [x,y,r,flg];
+}
+
+function rotateSq(){
+    noStroke();
+    fill(31,127,255);
+    //中心原点四角形作成
+    rectMode(CENTER);
+    // rotation
+    rotateX(frameCount/20);
+    rotateY(frameCount/15);
+    rotateZ(frameCount/30);
+    rect(0, 0, width/3, height/3);
+}
+
+function rotateTwo(){
+    push();
+    {
+        rotateY(frameCount/60);
+        //make circle
+        push();
+        translate(-width/6, 0, 0);
+        rotateY(frameCount/30);
+        sphere(height/5);
+        pop();
+
+        //make cube
+        push();
+        translate(width/6,0,0);
+        rotateY(frameCount/30);
+        box(height/4);
+        pop();
+    }
+    pop();
+}
+
+function changeColor2(){
+    var num = floor(random(3));
+    if(num==0)color[0]= (color[0]+51)%255;
+    else if(num==1)color[1]= (color[1]+51)%255;
+    else if(num==2)color[2]= (color[2]+51)%255;
+    else color=[255,255,255];
 }
